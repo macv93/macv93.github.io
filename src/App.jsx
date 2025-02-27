@@ -7,29 +7,18 @@ import VantaBackground from "./VantaBackground";
 const App = () => {
   return (
     <VantaBackground>
-      <nav
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <section style={{ paddingLeft: "1rem" }}>
-          <h1>Manny C.</h1>
-          <p style={{ fontStyle: "italic" }}>
+      <nav className="flex flex-col">
+        <section className="pl-4">
+          <h1 className="text-3xl font-semibold">Manny C.</h1>
+          <p className="italic">
             Fullstack developer fueled by React/TypeScript and mountain bike
             trails.
           </p>
         </section>
-        <ul
-          style={{
-            display: "flex",
-            gap: "1rem",
-            paddingLeft: "1rem",
-          }}
-        >
+        <ul className="flex gap-4 pl-4">
           <SocialLinks links={socialLinkConfig} />
           <a
-            style={{ textDecoration: "none" }}
+            className="no-underline"
             href="mailto:manuel.canarte@gmail.com"
             title="Let's connect!"
           >

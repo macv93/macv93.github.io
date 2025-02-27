@@ -20,18 +20,18 @@ const ClientLocation = () => {
     };
 
     fetchLocation();
-  }, []);
+  });
 
   if (error) {
-    return <div style={{ paddingLeft: "1rem" }}></div>;
+    return <div className="pl-4"></div>;
   }
 
   if (location === null) {
-    return <div style={{ paddingLeft: "1rem" }}>Loading location...</div>;
+    return <div className="pl-4">Loading location...</div>;
   }
 
   return (
-    <div style={{ padding: "1rem" }}>
+    <div className="p-4">
       <p>Your IP address: {location.ip}</p>
       <p>
         {location.city}, {location.region}, {location.country_name}

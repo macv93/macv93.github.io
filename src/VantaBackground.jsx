@@ -88,65 +88,34 @@ const VantaBackground = ({ children }) => {
   };
 
   return (
-    <div style={{ position: "relative", height: "100vh" }}>
-      <div
-        ref={vantaRef}
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: -1,
-        }}
-      />
+    <div className="relative h-screen">
+      <div ref={vantaRef} className="w-full h-full fixed top-0 left-0 z-[-1]" />
       {children}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          left: "20px",
-          zIndex: 1,
-          background: "rgba(0, 0, 0, 0.5)",
-          padding: "10px",
-          borderRadius: "5px",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <button onClick={toggleSettings}>
+      <div className="absolute bottom-5 left-5 z-1 bg-black/50 p-2 rounded-md flex flex-col">
+        <button
+          onClick={toggleSettings}
+          className="text-white border border-white rounded-md p-1"
+        >
           {!showSettings ? "Settings" : "Close"}
         </button>
         {showSettings && (
           <>
-            <div>
-              <label style={{ color: "white" }}>Color 1:</label>
-              <div style={{ display: "flex", alignItems: "center" }}>
+            <div className="flex items-center mt-2">
+              <label className="text-white mr-2">Color 1:</label>
+              <div className="flex items-center">
                 <div
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    backgroundColor: color1,
-                    cursor: "pointer",
-                    marginRight: "5px",
-                  }}
+                  className="w-5 h-5 cursor-pointer mr-1"
+                  style={{ backgroundColor: color1 }}
                   onClick={() => toggleColorPicker("1")}
                 />
                 {activePicker === "1" && (
                   <div
                     ref={colorPickerRef1}
-                    style={{
-                      position: "absolute",
-                      bottom: "60px",
-                      left: "100px",
-                      display: "flex",
-                      flexDirection: "row-reverse",
-                      alignItems: "center",
-                    }}
+                    className="absolute bottom-14 left-24 flex flex-row-reverse items-center"
                   >
                     <button
                       onClick={() => toggleColorPicker("1")}
-                      style={{ marginLeft: "5px" }}
+                      className="ml-1 text-white border border-white rounded-lg p-1"
                     >
                       X
                     </button>
@@ -158,34 +127,22 @@ const VantaBackground = ({ children }) => {
                 )}
               </div>
             </div>
-            <div>
-              <label style={{ color: "white" }}>Color 2:</label>
-              <div style={{ display: "flex", alignItems: "center" }}>
+            <div className="flex items-center mt-2">
+              <label className="text-white mr-2">Color 2:</label>
+              <div className="flex items-center">
                 <div
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    backgroundColor: color2,
-                    cursor: "pointer",
-                    marginRight: "5px",
-                  }}
+                  className="w-5 h-5 cursor-pointer mr-1"
+                  style={{ backgroundColor: color2 }}
                   onClick={() => toggleColorPicker("2")}
                 />
                 {activePicker === "2" && (
                   <div
                     ref={colorPickerRef2}
-                    style={{
-                      position: "absolute",
-                      bottom: "60px",
-                      left: "100px",
-                      display: "flex",
-                      flexDirection: "row-reverse",
-                      alignItems: "center",
-                    }}
+                    className="absolute bottom-14 left-24 flex flex-row-reverse items-center"
                   >
                     <button
                       onClick={() => toggleColorPicker("2")}
-                      style={{ marginLeft: "5px" }}
+                      className="ml-1 text-white border border-white rounded-lg p-1"
                     >
                       X
                     </button>
@@ -197,32 +154,42 @@ const VantaBackground = ({ children }) => {
                 )}
               </div>
             </div>
-            <div>
-              <label style={{ color: "white" }}>
+            <div className="flex items-center mt-2">
+              <label className="text-white mr-2">
                 Size: {cellSize.toFixed(1)}
               </label>
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="flex items-center">
                 <button
-                  style={{ marginRight: "5px" }}
+                  className="mr-1 border border-white rounded-md p-1"
                   onClick={() => handleSizeChange(-0.1)}
                 >
                   -
                 </button>
-                <button onClick={() => handleSizeChange(0.1)}>+</button>
+                <button
+                  className="border border-white rounded-md p-1"
+                  onClick={() => handleSizeChange(0.1)}
+                >
+                  +
+                </button>
               </div>
             </div>
-            <div>
-              <label style={{ color: "white" }}>
+            <div className="flex items-center mt-2">
+              <label className="text-white mr-2">
                 Speed: {cellSpeed.toFixed(1)}
               </label>
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="flex items-center">
                 <button
-                  style={{ marginRight: "5px" }}
+                  className="mr-1 border border-white rounded-md p-1"
                   onClick={() => handleSpeedChange(-0.1)}
                 >
                   -
                 </button>
-                <button onClick={() => handleSpeedChange(0.1)}>+</button>
+                <button
+                  className="border border-white rounded-md p-1"
+                  onClick={() => handleSpeedChange(0.1)}
+                >
+                  +
+                </button>
               </div>
             </div>
           </>
