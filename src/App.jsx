@@ -1,9 +1,7 @@
 import ClientLocation from "./ClientLocation";
-import Strava from "./Strava";
+import { socialLinkConfig } from "./socialLinkConfig";
+import SocialLinks from "./SocialLinks";
 import VantaBackground from "./VantaBackground";
-
-const LINKEDIN_URL = "https://www.linkedin.com/in/manuel-canarte/";
-const GITHUB_URL = "https://github.com/macv93";
 
 const App = () => {
   return (
@@ -15,27 +13,26 @@ const App = () => {
           fontFamily: "monospace",
         }}
       >
-        <h1 style={{ paddingLeft: "1rem" }}>Manny C.</h1>
-        <p>
-          Fullstack developer fueled by React/TypeScript and mountain bike
-          trails."
-        </p>
-        <ul style={{ display: "flex", gap: "1rem", paddingLeft: "1rem" }}>
+        <section style={{ paddingLeft: "1rem" }}>
+          <h1>Manny C.</h1>
+          <p style={{ fontStyle: "italic" }}>
+            Fullstack developer fueled by React/TypeScript and mountain bike
+            trails.
+          </p>
+        </section>
+        <ul
+          style={{
+            display: "flex",
+            gap: "1rem",
+            paddingLeft: "1rem",
+          }}
+        >
+          <SocialLinks links={socialLinkConfig} />
           <a
-            href={GITHUB_URL}
-            title="Connect with me on GitHub"
-            target="_blank"
+            style={{ textDecoration: "none" }}
+            href="mailto:manuel.canarte@gmail.com"
+            title="Let's connect!"
           >
-            GitHub
-          </a>
-          <a
-            href={LINKEDIN_URL}
-            title="Connect with me on LinkedIn"
-            target="_blank"
-          >
-            LinkedIn
-          </a>
-          <a href="mailto:manuel.canarte@gmail.com" title="Let's connect!">
             Contact
           </a>
         </ul>
