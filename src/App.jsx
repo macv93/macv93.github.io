@@ -59,13 +59,12 @@ const App = () => {
       <nav
         style={{
           display: "flex",
-          width: "100%",
-          alignContent: "space-evenly",
+          flexDirection: "column",
           fontFamily: "monospace",
         }}
       >
-        <div style={{ padding: "1rem" }}>Manny</div>
-        <ul style={{ display: "flex", gap: "1rem" }}>
+        <h1 style={{ paddingLeft: "1rem" }}>Manny C.</h1>
+        <ul style={{ display: "flex", gap: "1rem", paddingLeft: "1rem" }}>
           <a href={GITHUB_URL} title="Connect with me on GitHub">
             GitHub
           </a>
@@ -76,8 +75,8 @@ const App = () => {
             Contact
           </a>
         </ul>
+        <ClientLocation />
       </nav>
-      <ClientLocation />
     </div>
   );
 };
