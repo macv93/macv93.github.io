@@ -16,10 +16,18 @@ const App = () => {
       >
         <h1 style={{ paddingLeft: "1rem" }}>Manny C.</h1>
         <ul style={{ display: "flex", gap: "1rem", paddingLeft: "1rem" }}>
-          <a href={GITHUB_URL} title="Connect with me on GitHub">
+          <a
+            href={GITHUB_URL}
+            title="Connect with me on GitHub"
+            target="_blank"
+          >
             GitHub
           </a>
-          <a href={LINKEDIN_URL} title="Connect with me on LinkedIn">
+          <a
+            href={LINKEDIN_URL}
+            title="Connect with me on LinkedIn"
+            target="_blank"
+          >
             LinkedIn
           </a>
           <a href="mailto:manuel.canarte@gmail.com" title="Let's connect!">
