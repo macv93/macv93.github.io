@@ -10,7 +10,6 @@ const App = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          fontFamily: "monospace",
         }}
       >
         <section style={{ paddingLeft: "1rem" }}>
