@@ -1,4 +1,5 @@
 import ClientLocation from "./ClientLocation";
+import Strava from "./Strava";
 import VantaBackground from "./VantaBackground";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/manuel-canarte/";
@@ -15,6 +16,10 @@ const App = () => {
         }}
       >
         <h1 style={{ paddingLeft: "1rem" }}>Manny C.</h1>
+        <p>
+          Fullstack developer fueled by React/TypeScript and mountain bike
+          trails."
+        </p>
         <ul style={{ display: "flex", gap: "1rem", paddingLeft: "1rem" }}>
           <a
             href={GITHUB_URL}
