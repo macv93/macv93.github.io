@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import CELLS from "vanta/dist/vanta.cells.min";
+import ClientLocation from "./ClientLocation";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/manuel-canarte/";
 const GITHUB_URL = "https://github.com/macv93";
@@ -65,7 +66,7 @@ const App = () => {
       >
         <div style={{ padding: "1rem" }}>Manny</div>
         <ul style={{ display: "flex", gap: "1rem" }}>
-          <a href={GITHUB_URL} title="Connect with me on LinkedIn">
+          <a href={GITHUB_URL} title="Connect with me on GitHub">
             GitHub
           </a>
           <a href={LINKEDIN_URL} title="Connect with me on LinkedIn">
@@ -76,6 +77,7 @@ const App = () => {
           </a>
         </ul>
       </nav>
+      <ClientLocation />
     </div>
   );
 };
