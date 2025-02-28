@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ChromePicker } from "react-color";
 import * as THREE from "three";
 import CELLS from "vanta/dist/vanta.cells.min";
-import { useClickOutside } from "./hooks/useClickOutside";
+import { useClickOutside } from "../hooks/useClickOutside";
 
 const VantaBackground = ({ children }) => {
   const vantaRef = useRef(null);
@@ -19,6 +19,7 @@ const VantaBackground = ({ children }) => {
   useClickOutside(colorPickerRef1, activePicker === "1", () =>
     setActivePicker(null)
   );
+
   useClickOutside(colorPickerRef2, activePicker === "2", () =>
     setActivePicker(null)
   );

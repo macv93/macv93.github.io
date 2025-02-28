@@ -1,9 +1,7 @@
 const HydrocutIFrame = () => {
   return (
     <iframe
-      className="pl-4"
-      width="560"
-      height="315"
+      className="p-4 pr-4 max-w-lg"
       src="https://www.youtube.com/embed/k6_N9JR1A_I?si=fIqaU8y2CIqQ6ZVz&amp;start=45"
       title="YouTube video player"
       frameborder="0"
