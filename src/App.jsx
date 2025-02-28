@@ -9,13 +9,13 @@ const App = () => {
     <VantaBackground>
       <nav className="flex flex-col">
         <section className="pl-4 mb-4">
-          <h1 className="text-4xl">Manny C.</h1>
-          <p className="italic text-2xl font-light">
+          <h1 className="text-2xl">Manny C.</h1>
+          <p className="italic text-md font-light">
             Fullstack developer fueled by React/TypeScript and mountain bike
             trails.
           </p>
         </section>
-        <ul className="flex gap-4 pl-4 mb-4 text-2xl">
+        <ul className="flex gap-4 pl-4 mb-4 text-lg">
           <SocialLinks links={socialLinkConfig} />
           <a
             className="no-underline"
