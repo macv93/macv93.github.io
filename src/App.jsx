@@ -1,4 +1,3 @@
-import ClientLocation from "./components/ClientLocation";
 import HydrocutIFrame from "./components/HydrocutIFrame";
 import { socialLinkConfig } from "./components/socialLinkConfig";
 import SocialLinks from "./components/SocialLinks";
@@ -26,7 +25,6 @@ const App = () => {
           </a>
         </ul>
         <HydrocutIFrame />
-        <ClientLocation />
       </nav>
     </VantaBackground>
   );
