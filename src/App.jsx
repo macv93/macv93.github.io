@@ -17,7 +17,7 @@ const App = () => {
         <ul className="flex gap-4 pl-4 mb-4 text-lg">
           <a
             className="no-underline"
-            href="/manny-canarte-software-engineer.pdf"
+            href="/manny-canarte-software-developer.pdf"
             target="_blank"
           >
             Resume
