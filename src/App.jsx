@@ -15,6 +15,13 @@ const App = () => {
           </p>
         </section>
         <ul className="flex gap-4 pl-4 mb-4 text-lg">
+          <a
+            className="no-underline"
+            href="/manny-canarte-software-engineer.pdf"
+            target="_blank"
+          >
+            Resume
+          </a>
           <SocialLinks links={socialLinkConfig} />
           <a
             className="no-underline"
