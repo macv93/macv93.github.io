@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from "react";
 
 const ImagePreviewRow = ({ images }) => {
   const [fullScreenImage, setFullScreenImage] = useState(null);
-  const IMAGES_PER_ROW = 5; 
+  const IMAGES_PER_ROW = 5;
 
   const handleImageClick = (image) => {
     setFullScreenImage(image);
@@ -12,10 +12,49 @@ const ImagePreviewRow = ({ images }) => {
     setFullScreenImage(null);
   };
 
-  const rows = [];
-  for (let i = 0; i < images.length; i += IMAGES_PER_ROW) {
-    rows.push(images.slice(i, i + IMAGES_PER_ROW));
-  }
+  const rows = useMemo(() => {
+    const newRows = [];
+    for (let i = 0; i < images.length; i += IMAGES_PER_ROW) {
+      newRows.push(images.slice(i, i + IMAGES_PER_ROW));
+    }
+    return newRows;
+  }, [images]);
+
+  const navigateImage = (direction) => {
+    if (!fullScreenImage) return;
+
+    const currentIndex = images.indexOf(fullScreenImage);
+    if (currentIndex === -1) return;
+
+    let newIndex;
+    if (direction === "left") {
+      newIndex = currentIndex - 1 < 0 ? images.length - 1 : currentIndex - 1;
+    } else {
+      newIndex = currentIndex + 1 >= images.length ? 0 : currentIndex + 1;
+    }
+
+    setFullScreenImage(images[newIndex]);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (fullScreenImage) {
+        if (event.key === "ArrowLeft") {
+          navigateImage("left");
+        } else if (event.key === "ArrowRight") {
+          navigateImage("right");
+        } else if (event.key === "Escape") {
+          handleCloseFullScreen();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [fullScreenImage]);
 
   return (
     <div className="pl-4">
@@ -35,21 +74,40 @@ const ImagePreviewRow = ({ images }) => {
                   e.stopPropagation();
                   handleImageClick(image);
                 }}
+                loading="lazy"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/placeholder-image.png";
+                }}
               />
             ))}
           </div>
         ))}
 
         {fullScreenImage && (
-          <div
-            className="fixed top-0 left-0 w-full h-full bg-black/80 flex justify-center items-center z-50"
-            onClick={handleCloseFullScreen}
-          >
+          <div className="fixed top-0 left-0 w-full h-full bg-black/80 flex justify-center items-center z-50">
+            <button
+              className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-none border-none text-white text-3xl cursor-pointer"
+              onClick={() => navigateImage("left")}
+            >
+              {"<"}
+            </button>
             <img
               src={fullScreenImage}
               alt="Full Screen"
               className="max-h-full max-w-full object-contain"
+              loading="lazy"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/placeholder-fullscreen.png";
+              }}
             />
+            <button
+              className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-none border-none text-white text-3xl cursor-pointer"
+              onClick={() => navigateImage("right")}
+            >
+              {">"}
+            </button>
             <button
               className="absolute top-5 right-5 bg-none border-none text-white text-xl cursor-pointer"
               onClick={handleCloseFullScreen}
