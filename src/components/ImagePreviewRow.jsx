@@ -1,11 +1,11 @@
 import React, { useState, useMemo, useEffect } from "react";
 
-const ImagePreviewRow = ({ images }) => {
+const ImagePreviewRow = ({ combinedImages }) => {
   const [fullScreenImage, setFullScreenImage] = useState(null);
-  const IMAGES_PER_ROW = 5;
+  const imagesPerRow = 5;
 
   const handleImageClick = (image) => {
-    setFullScreenImage(image);
+    setFullScreenImage(image.fullImage);
   };
 
   const handleCloseFullScreen = () => {
@@ -14,26 +14,30 @@ const ImagePreviewRow = ({ images }) => {
 
   const rows = useMemo(() => {
     const newRows = [];
-    for (let i = 0; i < images.length; i += IMAGES_PER_ROW) {
-      newRows.push(images.slice(i, i + IMAGES_PER_ROW));
+    for (let i = 0; i < combinedImages.length; i += imagesPerRow) {
+      newRows.push(combinedImages.slice(i, i + imagesPerRow));
     }
     return newRows;
-  }, [images]);
+  }, [combinedImages, imagesPerRow]);
 
   const navigateImage = (direction) => {
     if (!fullScreenImage) return;
 
-    const currentIndex = images.indexOf(fullScreenImage);
+    const currentIndex = combinedImages.findIndex(
+      (img) => img.fullImage === fullScreenImage
+    );
     if (currentIndex === -1) return;
 
     let newIndex;
     if (direction === "left") {
-      newIndex = currentIndex - 1 < 0 ? images.length - 1 : currentIndex - 1;
+      newIndex =
+        currentIndex - 1 < 0 ? combinedImages.length - 1 : currentIndex - 1;
     } else {
-      newIndex = currentIndex + 1 >= images.length ? 0 : currentIndex + 1;
+      newIndex =
+        currentIndex + 1 >= combinedImages.length ? 0 : currentIndex + 1;
     }
 
-    setFullScreenImage(images[newIndex]);
+    setFullScreenImage(combinedImages[newIndex].fullImage);
   };
 
   useEffect(() => {
@@ -54,7 +58,7 @@ const ImagePreviewRow = ({ images }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [fullScreenImage]);
+  }, [fullScreenImage, combinedImages]);
 
   return (
     <div className="pl-4">
@@ -63,24 +67,28 @@ const ImagePreviewRow = ({ images }) => {
       </div>
       <div>
         {rows.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex whitespace-nowrap">
-            {row.map((image, imageIndex) => (
-              <img
-                key={imageIndex}
-                src={image}
-                alt={`Preview ${rowIndex}-${imageIndex}`}
-                className="h-20 m-1 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleImageClick(image);
-                }}
-                loading="lazy"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "/placeholder-image.png";
-                }}
-              />
-            ))}
+          <div key={rowIndex} className="flex flex-wrap">
+            {" "}
+            {/* Changed to flex-wrap */}
+            {row.map((image, imageIndex) => {
+              return (
+                <img
+                  key={imageIndex}
+                  src={image.thumbnail}
+                  alt={`Preview ${rowIndex}-${imageIndex}`}
+                  className="h-20 m-1 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleImageClick(image);
+                  }}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = placeholderThumbnail;
+                  }}
+                />
+              );
+            })}
           </div>
         ))}
 
@@ -89,28 +97,31 @@ const ImagePreviewRow = ({ images }) => {
             <button
               className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-none border-none text-white text-3xl cursor-pointer"
               onClick={() => navigateImage("left")}
+              aria-label="Previous Image"
             >
               {"<"}
             </button>
             <img
               src={fullScreenImage}
               alt="Full Screen"
-              className="max-h-full max-w-full object-contain"
+              className="max-h-[90vh] max-w-[90vw] object-contain" // Added max-h and max-w for responsiveness
               loading="lazy"
               onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = "/placeholder-fullscreen.png";
+                e.target.src = placeholderFullscreen;
               }}
             />
             <button
               className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-none border-none text-white text-3xl cursor-pointer"
               onClick={() => navigateImage("right")}
+              aria-label="Next Image"
             >
               {">"}
             </button>
             <button
               className="absolute top-5 right-5 bg-none border-none text-white text-xl cursor-pointer"
               onClick={handleCloseFullScreen}
+              aria-label="Close Full Screen"
             >
               X
             </button>

@@ -1,11 +1,17 @@
+import React from "react";
 import HydrocutIFrame from "./components/HydrocutIFrame";
 import ImagePreviewRow from "./components/ImagePreviewRow";
 import { socialLinkConfig } from "./components/socialLinkConfig";
 import SocialLinks from "./components/SocialLinks";
 import VantaBackground from "./components/VantaBackground";
-import { allImages } from "./components/helpers/images";
+import { allImages, thumbnails } from "./components/helpers/images";
 
 const App = () => {
+  const combinedImages = allImages.map((image, index) => ({
+    thumbnail: thumbnails[index],
+    fullImage: image,
+  }));
+
   return (
     <VantaBackground>
       <nav className="flex flex-col">
@@ -33,7 +39,9 @@ const App = () => {
             Contact
           </a>
         </ul>
-        <ImagePreviewRow images={allImages}/>
+        {combinedImages.length && (
+          <ImagePreviewRow combinedImages={combinedImages} />
+        )}
         <HydrocutIFrame />
       </nav>
     </VantaBackground>
