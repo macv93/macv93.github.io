@@ -1,7 +1,9 @@
 import HydrocutIFrame from "./components/HydrocutIFrame";
+import ImagePreviewRow from "./components/ImagePreviewRow";
 import { socialLinkConfig } from "./components/socialLinkConfig";
 import SocialLinks from "./components/SocialLinks";
 import VantaBackground from "./components/VantaBackground";
+import { allImages } from "./components/helpers/images";
 
 const App = () => {
   return (
@@ -31,6 +33,7 @@ const App = () => {
             Contact
           </a>
         </ul>
+        <ImagePreviewRow images={allImages}/>
         <HydrocutIFrame />
       </nav>
     </VantaBackground>
