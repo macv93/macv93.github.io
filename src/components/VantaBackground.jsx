@@ -9,10 +9,10 @@ const VantaBackground = ({ children }) => {
   const colorPickerRef1 = useRef(null);
   const colorPickerRef2 = useRef(null);
   let vantaEffect;
-  const [cellSize, setCellSize] = useState(0.6);
-  const [cellSpeed, setCellSpeed] = useState(1.6);
-  const [color1, setColor1] = useState("#00efff");
-  const [color2, setColor2] = useState("#ff4992");
+  const [cellSize, setCellSize] = useState(3);
+  const [cellSpeed, setCellSpeed] = useState(0.3);
+  const [color1, setColor1] = useState("#00000");
+  const [color2, setColor2] = useState("#556FD8");
   const [activePicker, setActivePicker] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
 
@@ -92,110 +92,112 @@ const VantaBackground = ({ children }) => {
     <div className="relative h-screen">
       <div ref={vantaRef} className="w-full h-full fixed top-0 left-0 z-[-1]" />
       {children}
-      <div className="absolute bottom-5 left-5 z-1 bg-black/50 p-2 rounded-md flex flex-col">
-        <button
-          onClick={toggleSettings}
-          className="text-white border border-white rounded-md p-1"
-        >
-          {!showSettings ? "Settings" : "Close"}
-        </button>
-        {showSettings && (
-          <>
-            <div className="flex items-center mt-2">
-              <label className="text-white mr-2">Color 1:</label>
-              <div className="flex items-center">
-                <div
-                  className="w-5 h-5 cursor-pointer mr-1"
-                  style={{ backgroundColor: color1 }}
-                  onClick={() => toggleColorPicker("1")}
-                />
-                {activePicker === "1" && (
+      {false && (
+        <div className="absolute bottom-5 left-5 z-1 bg-black/50 p-2 rounded-md flex flex-col">
+          <button
+            onClick={toggleSettings}
+            className="text-white border border-white rounded-md p-1"
+          >
+            {!showSettings ? "Settings" : "Close"}
+          </button>
+          {showSettings && (
+            <>
+              <div className="flex items-center mt-2">
+                <label className="text-white mr-2">Color 1:</label>
+                <div className="flex items-center">
                   <div
-                    ref={colorPickerRef1}
-                    className="absolute bottom-14 left-24 flex flex-row-reverse items-center"
-                  >
-                    <button
-                      onClick={() => toggleColorPicker("1")}
-                      className="ml-1 text-white border border-white rounded-lg p-1"
+                    className="w-5 h-5 cursor-pointer mr-1"
+                    style={{ backgroundColor: color1 }}
+                    onClick={() => toggleColorPicker("1")}
+                  />
+                  {activePicker === "1" && (
+                    <div
+                      ref={colorPickerRef1}
+                      className="absolute bottom-14 left-24 flex flex-row-reverse items-center"
                     >
-                      X
-                    </button>
-                    <ChromePicker
-                      color={color1}
-                      onChange={handleColorChange1}
-                    />
-                  </div>
-                )}
+                      <button
+                        onClick={() => toggleColorPicker("1")}
+                        className="ml-1 text-white border border-white rounded-lg p-1"
+                      >
+                        X
+                      </button>
+                      <ChromePicker
+                        color={color1}
+                        onChange={handleColorChange1}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="flex items-center mt-2">
-              <label className="text-white mr-2">Color 2:</label>
-              <div className="flex items-center">
-                <div
-                  className="w-5 h-5 cursor-pointer mr-1"
-                  style={{ backgroundColor: color2 }}
-                  onClick={() => toggleColorPicker("2")}
-                />
-                {activePicker === "2" && (
+              <div className="flex items-center mt-2">
+                <label className="text-white mr-2">Color 2:</label>
+                <div className="flex items-center">
                   <div
-                    ref={colorPickerRef2}
-                    className="absolute bottom-14 left-24 flex flex-row-reverse items-center"
-                  >
-                    <button
-                      onClick={() => toggleColorPicker("2")}
-                      className="ml-1 text-white border border-white rounded-lg p-1"
+                    className="w-5 h-5 cursor-pointer mr-1"
+                    style={{ backgroundColor: color2 }}
+                    onClick={() => toggleColorPicker("2")}
+                  />
+                  {activePicker === "2" && (
+                    <div
+                      ref={colorPickerRef2}
+                      className="absolute bottom-14 left-24 flex flex-row-reverse items-center"
                     >
-                      X
-                    </button>
-                    <ChromePicker
-                      color={color2}
-                      onChange={handleColorChange2}
-                    />
-                  </div>
-                )}
+                      <button
+                        onClick={() => toggleColorPicker("2")}
+                        className="ml-1 text-white border border-white rounded-lg p-1"
+                      >
+                        X
+                      </button>
+                      <ChromePicker
+                        color={color2}
+                        onChange={handleColorChange2}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="flex items-center mt-2">
-              <label className="text-white mr-2">
-                Size: {cellSize.toFixed(1)}
-              </label>
-              <div className="flex items-center">
-                <button
-                  className="mr-1 border border-white rounded-md p-1"
-                  onClick={() => handleSizeChange(-0.1)}
-                >
-                  -
-                </button>
-                <button
-                  className="border border-white rounded-md p-1"
-                  onClick={() => handleSizeChange(0.1)}
-                >
-                  +
-                </button>
+              <div className="flex items-center mt-2">
+                <label className="text-white mr-2">
+                  Size: {cellSize.toFixed(1)}
+                </label>
+                <div className="flex items-center">
+                  <button
+                    className="mr-1 border border-white rounded-md p-1"
+                    onClick={() => handleSizeChange(-0.1)}
+                  >
+                    -
+                  </button>
+                  <button
+                    className="border border-white rounded-md p-1"
+                    onClick={() => handleSizeChange(0.1)}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center mt-2">
-              <label className="text-white mr-2">
-                Speed: {cellSpeed.toFixed(1)}
-              </label>
-              <div className="flex items-center">
-                <button
-                  className="mr-1 border border-white rounded-md p-1"
-                  onClick={() => handleSpeedChange(-0.1)}
-                >
-                  -
-                </button>
-                <button
-                  className="border border-white rounded-md p-1"
-                  onClick={() => handleSpeedChange(0.1)}
-                >
-                  +
-                </button>
+              <div className="flex items-center mt-2">
+                <label className="text-white mr-2">
+                  Speed: {cellSpeed.toFixed(1)}
+                </label>
+                <div className="flex items-center">
+                  <button
+                    className="mr-1 border border-white rounded-md p-1"
+                    onClick={() => handleSpeedChange(-0.1)}
+                  >
+                    -
+                  </button>
+                  <button
+                    className="border border-white rounded-md p-1"
+                    onClick={() => handleSpeedChange(0.1)}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-            </div>
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };
