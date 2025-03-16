@@ -10,7 +10,7 @@ const VantaBackground = ({ children }) => {
   const colorPickerRef2 = useRef(null);
   let vantaEffect;
   const [cellSize, setCellSize] = useState(3);
-  const [cellSpeed, setCellSpeed] = useState(0.3);
+  const [cellSpeed, setCellSpeed] = useState(0.6);
   const [color1, setColor1] = useState("#00000");
   const [color2, setColor2] = useState("#556FD8");
   const [activePicker, setActivePicker] = useState(null);
