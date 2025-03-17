@@ -1,7 +1,8 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useMemo, useEffect, useContext } from "react";
+import { CombinedImagesContext } from "../contexts/CombinedImagesProvider";
 
-const ImagePreviewRow = ({ combinedImages }) => {
-  const [fullScreenImage, setFullScreenImage] = useState(null);
+const ImagePreviewRow = () => {
+  const { combinedImages, fullScreenImage, setFullScreenImage, navigateImage } = useContext(CombinedImagesContext);
   const imagesPerRow = 5;
 
   const handleImageClick = (image) => {
@@ -19,26 +20,6 @@ const ImagePreviewRow = ({ combinedImages }) => {
     }
     return newRows;
   }, [combinedImages, imagesPerRow]);
-
-  const navigateImage = (direction) => {
-    if (!fullScreenImage) return;
-
-    const currentIndex = combinedImages.findIndex(
-      (img) => img.fullImage === fullScreenImage
-    );
-    if (currentIndex === -1) return;
-
-    let newIndex;
-    if (direction === "left") {
-      newIndex =
-        currentIndex - 1 < 0 ? combinedImages.length - 1 : currentIndex - 1;
-    } else {
-      newIndex =
-        currentIndex + 1 >= combinedImages.length ? 0 : currentIndex + 1;
-    }
-
-    setFullScreenImage(combinedImages[newIndex].fullImage);
-  };
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -58,7 +39,7 @@ const ImagePreviewRow = ({ combinedImages }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [fullScreenImage, combinedImages]);
+  }, [fullScreenImage, combinedImages, navigateImage]);
 
   return (
     <div className="pl-4">
@@ -68,8 +49,6 @@ const ImagePreviewRow = ({ combinedImages }) => {
       <div>
         {rows.map((row, rowIndex) => (
           <div key={rowIndex} className="flex flex-wrap">
-            {" "}
-            {/* Changed to flex-wrap */}
             {row.map((image, imageIndex) => {
               return (
                 <img
@@ -104,7 +83,7 @@ const ImagePreviewRow = ({ combinedImages }) => {
             <img
               src={fullScreenImage}
               alt="Full Screen"
-              className="max-h-[90vh] max-w-[90vw] object-contain" // Added max-h and max-w for responsiveness
+              className="max-h-[90vh] max-w-[90vw] object-contain" 
               loading="lazy"
               onError={(e) => {
                 e.target.onerror = null;
