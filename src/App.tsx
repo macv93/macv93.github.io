@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { allImages, thumbnails } from "./components/helpers/images";
 import { socialLinkConfig } from "./components/socialLinkConfig";

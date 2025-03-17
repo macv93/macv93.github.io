@@ -1,7 +1,6 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import ImagePreviewRow from "../components/ImagePreviewRow";
+import { Route, Routes } from "react-router-dom";
 import HydrocutIFrame from "../components/HydrocutIFrame";
+import ImagePreviewRow from "../components/ImagePreviewRow";
 
 const AppRoutes = () => {
   return (

@@ -1,8 +1,9 @@
 import React, { useMemo, useEffect, useContext } from "react";
-import { CombinedImagesContext } from "../contexts/CombinedImagesProvider";
+import { useCombinedImagesContext } from "../contexts/CombinedImagesProvider";
 
 const ImagePreviewRow = () => {
-  const { combinedImages, fullScreenImage, setFullScreenImage, navigateImage } = useContext(CombinedImagesContext);
+ 
+  const { combinedImages, fullScreenImage, setFullScreenImage, navigateImage } = useCombinedImagesContext();
   const imagesPerRow = 5;
 
   const handleImageClick = (image: { fullImage?: any; }) => {
