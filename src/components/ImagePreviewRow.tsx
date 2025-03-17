@@ -46,9 +46,6 @@ const ImagePreviewRow = () => {
 
   return (
     <div className="pl-4">
-      <div className="mb-2">
-        <span className="font-semibold">Photography</span>
-      </div>
       <div>
         {rows.map((row, rowIndex) => (
           <div key={rowIndex} className="flex flex-wrap">
