@@ -4,7 +4,7 @@ import { useCombinedImagesContext } from "../contexts/CombinedImagesProvider";
 const ImagePreviewRow = () => {
  
   const { combinedImages, fullScreenImage, setFullScreenImage, navigateImage } = useCombinedImagesContext();
-  const imagesPerRow = 5;
+  const imagesPerRow = 6;
 
   const handleImageClick = (image: { fullImage?: any; }) => {
     if (image.fullImage) {
@@ -58,7 +58,7 @@ const ImagePreviewRow = () => {
                   key={imageIndex}
                   src={image.thumbnail}
                   alt={`Preview ${rowIndex}-${imageIndex}`}
-                  className="h-20 m-1 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110"
+                  className="w-20 h-20 m-1 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleImageClick(image);
