@@ -1,18 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChromePicker } from "react-color";
 import * as THREE from "three";
 import CELLS from "vanta/dist/vanta.cells.min";
 import { useClickOutside } from "../hooks/useClickOutside";
+
+const getRandomHexColor = () => {
+  const randomNum1 = Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, "0");
+  const randomNum2 = Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, "0");
+  return [`#${randomNum1}`, `#${randomNum2}`];
+};
 
 const VantaBackground = ({ children }) => {
   const vantaRef = useRef(null);
   const colorPickerRef1 = useRef(null);
   const colorPickerRef2 = useRef(null);
   let vantaEffect;
+
+  const [randomColor1, randomColor2] = getRandomHexColor();
   const [cellSize, setCellSize] = useState(3);
   const [cellSpeed, setCellSpeed] = useState(0.6);
-  const [color1, setColor1] = useState("#00000");
-  const [color2, setColor2] = useState("#556FD8");
+  const [color1, setColor1] = useState(randomColor1);
+  const [color2, setColor2] = useState(randomColor2);
   const [activePicker, setActivePicker] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
 
