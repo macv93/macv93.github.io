@@ -57,7 +57,7 @@ const ImagePreviewRow = () => {
                 <img
                   key={imageIndex}
                   src={image.thumbnail}
-                  alt={`Preview ${rowIndex}-${imageIndex}`}
+                  alt={`Loading...`}
                   className="w-20 h-20 m-1 cursor-pointer object-cover transition-transform duration-200 ease-in-out hover:scale-110"
                   onClick={(e) => {
                     e.stopPropagation();
