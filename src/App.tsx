@@ -19,7 +19,9 @@ const App = () => {
         <Router>
           <nav className="flex flex-col">
             <section className="pl-4 mb-4">
-              <h1 className="text-2xl">Manny C.</h1>
+              <h1 className="text-2xl">
+                <Link to="/">Manny C.</Link>
+              </h1>
               <p className="italic text-md font-light">
                 Fullstack developer fueled by React/TypeScript and mountain bike
                 trails.

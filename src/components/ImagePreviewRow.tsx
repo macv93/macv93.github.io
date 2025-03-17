@@ -5,8 +5,10 @@ const ImagePreviewRow = () => {
   const { combinedImages, fullScreenImage, setFullScreenImage, navigateImage } = useContext(CombinedImagesContext);
   const imagesPerRow = 5;
 
-  const handleImageClick = (image) => {
-    setFullScreenImage(image.fullImage);
+  const handleImageClick = (image: { fullImage?: any; }) => {
+    if (image.fullImage) {
+      setFullScreenImage(image.fullImage);
+    }
   };
 
   const handleCloseFullScreen = () => {
@@ -22,7 +24,7 @@ const ImagePreviewRow = () => {
   }, [combinedImages, imagesPerRow]);
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: { key: string; }) => {
       if (fullScreenImage) {
         if (event.key === "ArrowLeft") {
           navigateImage("left");
@@ -49,7 +51,7 @@ const ImagePreviewRow = () => {
       <div>
         {rows.map((row, rowIndex) => (
           <div key={rowIndex} className="flex flex-wrap">
-            {row.map((image, imageIndex) => {
+            {row.map((image: { thumbnail?: any; fullImage?: any; }, imageIndex: React.Key | null | undefined) => {
               return (
                 <img
                   key={imageIndex}
@@ -62,8 +64,7 @@ const ImagePreviewRow = () => {
                   }}
                   loading="lazy"
                   onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = placeholderThumbnail;
+                    (e.target as HTMLImageElement).onerror = null;
                   }}
                 />
               );
@@ -86,8 +87,7 @@ const ImagePreviewRow = () => {
               className="max-h-[90vh] max-w-[90vw] object-contain" 
               loading="lazy"
               onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = placeholderFullscreen;
+                (e.target as HTMLImageElement).onerror = null;
               }}
             />
             <button

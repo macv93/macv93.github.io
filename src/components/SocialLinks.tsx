@@ -1,6 +1,11 @@
 import React from "react";
+import { Link } from "./socialLinkConfig";
 
-const SocialLinks = ({ links }) => {
+type SocialLinksProps = {
+  links: Link[];
+};
+
+const SocialLinks = ({ links }: SocialLinksProps) => {
   return (
     <div className="flex gap-4">
       {links.map((link) => (
