@@ -26,7 +26,7 @@ const App = () => {
                 trails.
               </p>
             </section>
-            <ul className="flex gap-4 pl-4 mb-4 text-lg">
+            <ul className="flex flex-col gap-4 pl-4 mb-4 md:flex-row md:text-md">
               <a
                 className="no-underline"
                 href="/manny-canarte-software-developer.pdf"
