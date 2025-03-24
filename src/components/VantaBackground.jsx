@@ -23,8 +23,8 @@ const VantaBackground = ({ children }) => {
   const [randomColor1, randomColor2] = getRandomHexColor();
   const [cellSize, setCellSize] = useState(3);
   const [cellSpeed, setCellSpeed] = useState(0.6);
-  const [color1, setColor1] = useState(randomColor1);
-  const [color2, setColor2] = useState(randomColor2);
+  const [color1, setColor1] = useState("#0f6600");
+  const [color2, setColor2] = useState("#a0ff8f");
   const [activePicker, setActivePicker] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
 
