@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "./socialLinkConfig";
 
 type SocialLinksProps = {
@@ -16,7 +15,7 @@ const SocialLinks = ({ links }: SocialLinksProps) => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={link.ariaLabel}
-          className="no-underline"
+          className="no-underline transform transition-transform duration-500 hover:scale-130"
         >
           {link.text}
         </a>
