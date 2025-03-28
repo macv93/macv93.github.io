@@ -21,10 +21,10 @@ const VantaBackground = ({ children }) => {
   let vantaEffect;
 
   const [randomColor1, randomColor2] = getRandomHexColor();
-  const [cellSize, setCellSize] = useState(3);
-  const [cellSpeed, setCellSpeed] = useState(0.6);
-  const [color1, setColor1] = useState("#0f6600");
-  const [color2, setColor2] = useState("#a0ff8f");
+  const [cellSize, setCellSize] = useState(2);
+  const [cellSpeed, setCellSpeed] = useState(.8);
+  const [color1, setColor1] = useState("#FFFFFF");
+  const [color2, setColor2] = useState("#000000");
   const [activePicker, setActivePicker] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
 
