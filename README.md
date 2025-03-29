@@ -16,7 +16,7 @@ This project was built with:
 
 The site is deployed using GitHub Actions, which automates the build and deployment process whenever changes are pushed to the `main` branch.
 
-You can view the deployed site here: [https://manuelcanarte.com/]((https://manuelcanarte.com/))
+You can view the deployed site here: [https://manuelcanarte.com/](https://manuelcanarte.com/)
 
 ## Getting Started (If you want to run it locally)
 
