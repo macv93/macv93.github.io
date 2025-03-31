@@ -1,5 +1,6 @@
 import React, { useMemo, useEffect, useContext } from "react";
 import { useCombinedImagesContext } from "../contexts/CombinedImagesProvider";
+import { FaArrowLeft, FaArrowRight, FaRegWindowClose } from "react-icons/fa";
 
 const ImagePreviewRow = () => {
  
@@ -73,11 +74,11 @@ const ImagePreviewRow = () => {
         {fullScreenImage && (
           <div className="fixed top-0 left-0 w-full h-full bg-black/80 flex justify-center items-center z-50">
             <button
-              className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-none border-none text-white text-3xl cursor-pointer"
+              className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-none border-none text-white text-2xl cursor-pointer"
               onClick={() => navigateImage("left")}
               aria-label="Previous Image"
             >
-              {"<"}
+              <FaArrowLeft />
             </button>
             <img
               src={fullScreenImage}
@@ -89,18 +90,18 @@ const ImagePreviewRow = () => {
               }}
             />
             <button
-              className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-none border-none text-white text-3xl cursor-pointer"
+              className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-none border-none text-white text-2xl cursor-pointer"
               onClick={() => navigateImage("right")}
               aria-label="Next Image"
             >
-              {">"}
+              <FaArrowRight />
             </button>
             <button
-              className="absolute top-5 right-5 bg-none border-none text-white text-xl cursor-pointer"
+              className="absolute top-5 right-5 bg-none border-none text-white text-3xl cursor-pointer"
               onClick={handleCloseFullScreen}
               aria-label="Close Full Screen"
             >
-              X
+              <FaRegWindowClose />
             </button>
           </div>
         )}
