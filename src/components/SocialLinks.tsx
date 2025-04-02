@@ -15,7 +15,7 @@ const SocialLinks = ({ links }: SocialLinksProps) => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={link.ariaLabel}
-          className="no-underline transform transition-transform duration-500 hover:scale-130"
+          className="no-underline transform transition-transform duration-500 hover:scale-110"
         >
           {link.text}
         </a>

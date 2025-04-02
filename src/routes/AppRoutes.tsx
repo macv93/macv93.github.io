@@ -6,7 +6,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/photography" element={<ImagePreviewRow />} />
-      <Route path="/" element={<HydrocutIFrame />} />
+      <Route path="/mtb" element={<HydrocutIFrame />} />
+
     </Routes>
   );
 };
