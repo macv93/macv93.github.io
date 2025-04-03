@@ -17,7 +17,7 @@ const App = () => {
     <CombinedImagesProvider combinedImages={combinedImages}>
       <VantaBackground>
         <Router>
-          <nav className="flex flex-col">
+          <nav className="flex flex-col fade-in">
             <section className="pl-4 mb-4">
               <h1 className="text-2xl">
                 <Link to="/">Manny C.</Link>
