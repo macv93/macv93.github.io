@@ -25,11 +25,11 @@ export const socialLinkConfig : Link[] = [
     ariaLabel: "LinkedIn Profile",
     text: "LinkedIn",
   },
-  {
-    id: "strava",
-    url: STRAVA_URL,
-    title: "Connect with me on Strava",
-    ariaLabel: "Strava Profile",
-    text: "Strava",
-  },
+  // {
+  //   id: "strava",
+  //   url: STRAVA_URL,
+  //   title: "Connect with me on Strava",
+  //   ariaLabel: "Strava Profile",
+  //   text: "Strava",
+  // },
 ];

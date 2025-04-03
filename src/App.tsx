@@ -35,11 +35,18 @@ const App = () => {
               >
                 Resume
               </a>
+              <SocialLinks links={socialLinkConfig} />
               <Link
                 className="no-underline transform transition-transform duration-500 hover:scale-110"
                 to="/mtb"
               >
                 Mountain Biking
+              </Link>
+                <Link
+                className="no-underline transform transition-transform duration-500 hover:scale-110"
+                to="/strava"
+              >
+                Strava
               </Link>
               <Link
                 className="no-underline transform transition-transform duration-500 hover:scale-110"
@@ -47,7 +54,7 @@ const App = () => {
               >
                 Photography
               </Link>
-              <SocialLinks links={socialLinkConfig} />
+            
               <a
                 className="no-underline transform transition-transform duration-500 hover:scale-110"
                 href="mailto:manuel.canarte@gmail.com"
