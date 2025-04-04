@@ -101,7 +101,7 @@ const VantaBackground = ({ children }) => {
   };
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen background-in">
       <div ref={vantaRef} className="w-full h-full fixed top-0 left-0 z-[-1]" />
       {children}
       {false && (
