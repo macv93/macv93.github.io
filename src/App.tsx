@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <CombinedImagesProvider combinedImages={combinedImages}>
-      <VantaBackground>
+      {/* <VantaBackground> */}
         <Router>
           <nav className="flex flex-col fade-in">
             <section className="pl-4 mb-4">
@@ -66,7 +66,7 @@ const App = () => {
             <AppRoutes />
           </nav>
         </Router>
-      </VantaBackground>
+      {/* </VantaBackground> */}
     </CombinedImagesProvider>
   );
 };
