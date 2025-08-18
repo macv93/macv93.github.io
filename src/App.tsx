@@ -35,6 +35,13 @@ const App = () => {
               >
                 Resume
               </a>
+              <a
+                className="no-underline transform transition-transform duration-500 hover:scale-110"
+                href="/comptia-security-manny-cert.pdf"
+                target="_blank"
+              >
+                CompTIA Security+
+              </a>
               <SocialLinks links={socialLinkConfig} />
               <Link
                 className="no-underline transform transition-transform duration-500 hover:scale-110"
@@ -42,7 +49,7 @@ const App = () => {
               >
                 Mountain Biking
               </Link>
-                <Link
+              <Link
                 className="no-underline transform transition-transform duration-500 hover:scale-110"
                 to="/strava"
               >
@@ -54,7 +61,7 @@ const App = () => {
               >
                 Photography
               </Link>
-            
+
               <a
                 className="no-underline transform transition-transform duration-500 hover:scale-110"
                 href="mailto:manuel.canarte@gmail.com"
